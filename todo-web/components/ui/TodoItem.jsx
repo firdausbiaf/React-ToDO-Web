@@ -175,33 +175,7 @@ export const TodoItem = ({ todo, onToggle, onDelete, onUpdate }) => {
             )}
           </div>
 
-          <AnimatePresence>
-            {!isEditing && (
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-              >
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setIsEditing(true)}
-                  className="h-8 w-8"
-                >
-                  <Edit3 className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => onDelete(todo.id)}
-                  className="h-8 w-8 text-destructive hover:text-destructive"
-                >
-                  <Trash2 className="h-4 w-4" />
-                </Button>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          
         </div>
       </Card>
     </motion.div>
