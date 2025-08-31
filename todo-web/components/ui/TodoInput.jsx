@@ -61,59 +61,7 @@ export const TodoInput = ({ onAddTodo }) => {
             </Button>
           </div>
 
-          <AnimatePresence>
-            {showAdvanced && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.2 }}
-                className="flex gap-2 overflow-hidden"
-              >
-                <Select value={priority} onValueChange={setPriority}>
-                  <SelectTrigger className="w-32">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {Object.entries(PRIORITY_LABELS).map(([value, label]) => (
-                      <SelectItem key={value} value={value}>
-                        {label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button variant="outline" className="justify-start">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      {dueDate ? format(dueDate, 'MMM dd') : 'Due date'}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <CalendarComponent
-                      mode="single"
-                      selected={dueDate}
-                      onSelect={setDueDate}
-                      disabled={(date) => date < new Date().setHours(0, 0, 0, 0)}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-
-                {dueDate && (
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setDueDate(null)}
-                  >
-                    Clear
-                  </Button>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
+          
         </form>
       </Card>
     </motion.div>
